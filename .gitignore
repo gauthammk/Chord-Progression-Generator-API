@@ -1,0 +1,8 @@
+# Mac
+.DS_Store
+
+# VS Code
+.vscode
+
+# API Key
+API_Key.txt
