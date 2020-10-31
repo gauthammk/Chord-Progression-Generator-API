@@ -124,10 +124,52 @@ def mineThreeChordProgressions(baseUri, APIKey):
 
     # write to file as csv
     threeChordProgressionsDf.to_csv('three_chord_progressions.csv', index=False)
+def mineFourChordProgressions(baseUri, APIKey):
+    # define endpoint
+    chordProgressionsEndpoint = baseUri + 'trends/nodes?cp='
 
+    # add API key as a Bearer token for authorization
+    headers = {"Authorization": "Bearer " + APIKey}
+
+    # define the list to store four chord progressions
+    fourChordProgressionsList = []
+
+    # get chord progression paths from file
+    threeChordProgressionsDf = pd.read_csv('three_chord_progressions.csv')
+    threeChordProgressionPaths = threeChordProgressionsDf['chord_ID'].tolist()
+
+    # loop through each of the chords in the three chord progression file
+    for currentChordPath in threeChordProgressionPaths:
+
+        # construct a request endpoint by appending to the chord in the file
+        fourChordProgressionsEndpoint = chordProgressionsEndpoint + \
+            str(currentChordPath)
+        print('Finding: ', fourChordProgressionsEndpoint)
+        # get results
+        response = requests.get(
+            fourChordProgressionsEndpoint, headers=headers)
+
+        # append each four chord progression to the string (after removing the '[]' brackets since we need to build the whole json object in one list)
+        fourChordProgressionsList.append(response.text[1:-1])
+
+    # manual transformation into json format
+    fourChordProgressionsJson = '[' + ','.join(fourChordProgressionsList) + ']'
+    print(fourChordProgressionsJson)
+
+    # form the dataframe by reading the response as json
+    fourChordProgressionsDf = pd.read_json(fourChordProgressionsJson)
+
+    # discard chord progressions with low probabilty(< 0.05) since very few songs have these progressions
+    lowProbabilityIndices = fourChordProgressionsDf[fourChordProgressionsDf['probability'] < 0.08].index
+    fourChordProgressionsDf.drop(lowProbabilityIndices, inplace=True)
+    print(fourChordProgressionsDf)
+
+    # write to file as csv
+    fourChordProgressionsDf.to_csv('four_chord_progressions.csv', index=False)
 # main runner
 baseUri = 'https://api.hooktheory.com/v1/'
 APIKey = getAPIKey()
 # mineOneChordProgressions(baseUri, APIKey)
 # mineTwoChordProgressions(baseUri, APIKey)
-mineThreeChordProgressions(baseUri, APIKey)
+# mineThreeChordProgressions(baseUri, APIKey)
+mineFourChordProgressions(baseUri, APIKey)
