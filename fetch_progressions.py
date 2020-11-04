@@ -28,8 +28,8 @@ def mineOneChordProgressions(baseUri, APIKey):
     # form the dataframe by reading the response as json
     oneChordProgressionsDf = pd.read_json(oneChordProgressionsJson)
 
-    # discard chord progressions with low probabilty(< 0.01) since very few songs have these progressions
-    lowProbabilityIndices = oneChordProgressionsDf[oneChordProgressionsDf['probability'] < 0.01].index
+    # discard chord progressions with low probabilty(< 0.05) since very few songs have these progressions
+    lowProbabilityIndices = oneChordProgressionsDf[oneChordProgressionsDf['probability'] < 0.05].index
     oneChordProgressionsDf.drop(lowProbabilityIndices, inplace=True)
     print(oneChordProgressionsDf)
 
@@ -74,8 +74,8 @@ def mineTwoChordProgressions(baseUri, APIKey):
     # form the dataframe by reading the response as json
     twoChordProgressionsDf = pd.read_json(twoChordProgressionsJson)
 
-    # discard chord progressions with low probabilty(< 0.01) since very few songs have these progressions
-    lowProbabilityIndices = twoChordProgressionsDf[twoChordProgressionsDf['probability'] < 0.03].index
+    # discard chord progressions with low probabilty(< 0.05) since very few songs have these progressions
+    lowProbabilityIndices = twoChordProgressionsDf[twoChordProgressionsDf['probability'] < 0.05].index
     twoChordProgressionsDf.drop(lowProbabilityIndices, inplace=True)
     print(twoChordProgressionsDf)
 
@@ -160,7 +160,7 @@ def mineFourChordProgressions(baseUri, APIKey):
     fourChordProgressionsDf = pd.read_json(fourChordProgressionsJson)
 
     # discard chord progressions with low probabilty(< 0.05) since very few songs have these progressions
-    lowProbabilityIndices = fourChordProgressionsDf[fourChordProgressionsDf['probability'] < 0.08].index
+    lowProbabilityIndices = fourChordProgressionsDf[fourChordProgressionsDf['probability'] < 0.05].index
     fourChordProgressionsDf.drop(lowProbabilityIndices, inplace=True)
     print(fourChordProgressionsDf)
 
