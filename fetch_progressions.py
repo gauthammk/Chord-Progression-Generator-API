@@ -29,7 +29,7 @@ def mineOneChordProgressions(baseUri, APIKey):
     oneChordProgressionsDf = pd.read_json(oneChordProgressionsJson)
 
     # discard chord progressions with low probabilty(< 0.01) since very few songs have these progressions
-    lowProbabilityIndices = oneChordProgressionsDf[oneChordProgressionsDf['probability'] < 0.01].index
+    lowProbabilityIndices = oneChordProgressionsDf[oneChordProgressionsDf['probability'] < 0.05].index
     oneChordProgressionsDf.drop(lowProbabilityIndices, inplace=True)
     print(oneChordProgressionsDf)
 
@@ -75,7 +75,7 @@ def mineTwoChordProgressions(baseUri, APIKey):
     twoChordProgressionsDf = pd.read_json(twoChordProgressionsJson)
 
     # discard chord progressions with low probabilty(< 0.01) since very few songs have these progressions
-    lowProbabilityIndices = twoChordProgressionsDf[twoChordProgressionsDf['probability'] < 0.01].index
+    lowProbabilityIndices = twoChordProgressionsDf[twoChordProgressionsDf['probability'] < 0.05].index
     twoChordProgressionsDf.drop(lowProbabilityIndices, inplace=True)
     print(twoChordProgressionsDf)
 
@@ -86,5 +86,5 @@ def mineTwoChordProgressions(baseUri, APIKey):
 # main runner
 baseUri = 'https://api.hooktheory.com/v1/'
 APIKey = getAPIKey()
-# mineOneChordProgressions(baseUri, APIKey)
+mineOneChordProgressions(baseUri, APIKey)
 mineTwoChordProgressions(baseUri, APIKey)
