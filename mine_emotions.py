@@ -36,7 +36,7 @@ def mineChordProgressionEmotions(baseUri, APIKey, chordProgressions):
 
     for chordProgression in chordProgressions:
 
-        # get 5 songs that use the progression
+        # get the songs that use the progression
         response = requests.get(
             songsEndpoint + '?cp=' + chordProgression, headers=headers)
         songs = response.json()
