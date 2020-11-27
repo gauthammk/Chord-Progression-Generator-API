@@ -1,5 +1,4 @@
 import spotipy
-import csv
 import requests
 import pandas as pd
 import sqlite3 as sql

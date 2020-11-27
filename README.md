@@ -4,7 +4,7 @@
 
 ## Dataset creation
 
-1. Get an API key from https://www.hooktheory.com
+1. Get an API key from https://www.hooktheory.com and add it to a file called `APIKey.txt`.
 
 2. Obtain authentication to the Spotify API by creating the `SPOTIPY_CLIENT_ID` AND `SPOTIPY_CLIENT_SECRET` environment variables. They are availaible on the [Spotify for Developers Dashboard](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwjt--viqqPtAhW8zDgGHWEcC2AQFjAAegQIARAD&url=https%3A%2F%2Fdeveloper.spotify.com%2Fdashboard%2F&usg=AOvVaw3zu9Io8tYd2ulT_6rKNkyc)
 
