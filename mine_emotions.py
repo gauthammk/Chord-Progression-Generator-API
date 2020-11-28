@@ -73,8 +73,8 @@ def mineChordProgressionEmotions(baseUri, APIKey, chordProgressions):
 
 def writeEmotionDataToDB():
 
-    # get the top 5 chord progressions
-    topChordProgressionsDf = getTopNChordProgressionsDf(10)
+    # get the top chord progressions
+    topChordProgressionsDf = getTopNChordProgressionsDf(50)
     topChordProgressions = topChordProgressionsDf['child_path'].to_list()
 
     # get the emotion data i.e, valence and energies for the top 5 progressions
@@ -124,4 +124,3 @@ def fetchTrackFeatures(trackName, artist):
 baseUri = 'https://api.hooktheory.com/v1/'
 APIKey = getAPIKey()
 writeEmotionDataToDB()
-# fetchTrackFeatures('Hold It Against Me', 'Britney Spears')
