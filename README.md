@@ -24,6 +24,10 @@
 
    > Note: only emotions for four chord progressions have been considered for ease of usage.
 
+## Live Version
+
+A simplified version with 50 chord progressions has been deployed to https://chord-progression-generator.herokuapp.com
+
 ## Resources
 
 - [Hooktheory API](https://www.hooktheory.com/api/trends/docs) to fetch chord progression information
