@@ -26,6 +26,8 @@
 
 ## Live Version
 
+![Heroku](https://pyheroku-badge.herokuapp.com/?app=chord-progression-generator)
+
 A simplified version with 50 chord progressions has been deployed to https://chord-progression-generator.herokuapp.com
 
 ## Resources
