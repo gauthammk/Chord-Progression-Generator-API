@@ -1,6 +1,6 @@
 # Chord Progression Generator
 
-**_A handy tool to automatically generate chord progressions based on a selected mood. Built with the Hooktheory API an Spotipy._**
+**_A handy tool to automatically generate chord progressions based on a selected mood. Built with the Hooktheory API and Spotipy._**
 
 ## Dataset creation
 
